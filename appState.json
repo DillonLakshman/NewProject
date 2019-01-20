@@ -1,0 +1,77 @@
+{
+  "EDITOR_STATE": {
+    "allProjectFiles": {
+      "b7c9f332-1aa4-40aa-92e2-a818ebe51a00": {
+        "id": "b7c9f332-1aa4-40aa-92e2-a818ebe51a00",
+        "parent": null,
+        "name": "NewProject",
+        "type": "DIRECTORY",
+        "isDirectory": true,
+        "children": [
+          "19d70387-877e-4165-829a-44b3ca9d451b"
+        ],
+        "isRemovable": false,
+        "filePath": "NewProject"
+      },
+      "19d70387-877e-4165-829a-44b3ca9d451b": {
+        "id": "19d70387-877e-4165-829a-44b3ca9d451b",
+        "parent": "b7c9f332-1aa4-40aa-92e2-a818ebe51a00",
+        "name": "lambda.js",
+        "type": "LAMBDA_FILE",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "NewProject/lambda.js",
+        "code": "\nlet Swagger = require('swagger-client');\n\nexports.handler = function (event, context, callback) {\n\n    Swagger.http({\n        url: 'https://services.apixplatform.com/api-sandbox/application/token',\n        method: 'post',\n        query: {},\n        headers: { \"Accept\": \"*/*\", \"Content-Type\": \"application/json\" },\n        body: JSON.stringify({\n            \"userName\": \"Your email address\",\n            \"password\": \"Your password\"\n        })\n    }).then((response) => {\n        var access_token = \"bearer \" + response.body.access_token;\n        // Insert new API calls here to call with APIX Access Token\n\n\n        callback(null, 'Complete');\n    }).catch((err) => {\n        console.log(err);\n        callback(\"Execution failed\");\n    });\n\n}",
+        "triggers": [],
+        "config": {
+          "runtime": "nodejs8.10",
+          "timeout": 60,
+          "memory": 128
+        }
+      }
+    },
+    "deletedFiles": [],
+    "rootNode": "b7c9f332-1aa4-40aa-92e2-a818ebe51a00",
+    "openFiles": [
+      "19d70387-877e-4165-829a-44b3ca9d451b"
+    ],
+    "currentFileId": "19d70387-877e-4165-829a-44b3ca9d451b",
+    "resources": {},
+    "envVariables": [
+      {
+        "lambdaId": "all",
+        "varKey": "SIGMA_AWS_ACC_ID",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": false
+      }
+    ],
+    "packageJSON": {
+      "dependencies": {
+        "swagger-client": {
+          "name": "swagger-client",
+          "version": "3.8.21"
+        }
+      }
+    },
+    "lambdaId": "19d70387-877e-4165-829a-44b3ca9d451b"
+  },
+  "PROJECT_META": {
+    "projectName": "NewProject",
+    "projectDescription": "New Project",
+    "projectVersion": "1.0.0",
+    "projectRegion": "eu-central-1",
+    "platform": "AWS",
+    "platformRegions": {},
+    "lastSave": 1547999639439
+  },
+  "VCS_STATE": {
+    "provider": "GitHub",
+    "repo": {
+      "name": "NewProject",
+      "url": "https://github.com/DillonLakshman/NewProject"
+    }
+  }
+}
